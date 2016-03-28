@@ -11,7 +11,7 @@ This game project has the following:
 ## Setup
 
 ```
-npm install
 bower install
+npm install
 grunt server
 ```
