@@ -62,3 +62,24 @@ margin-top: -28.8em;
 overflow: hidden;
 background: red;
 }
+
+.Ground {
+  background: url(grass.png);
+  height: 2em;
+  width: 200em;
+  bottom: 7.7em;
+  position:absolute;
+  left:0;
+  right:0;
+  animation: grass 0.3s linear infinite;
+}
+
+
+@keyframes grass{
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-4em, 0, 0);
+  }
+}
