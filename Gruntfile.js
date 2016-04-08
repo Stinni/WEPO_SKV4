@@ -130,16 +130,6 @@ module.exports = function (grunt) {
             ]
         },
 
-        // Mocha testing framework configuration options
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-                }
-            }
-        },
-
         // Compiles Sass to CSS and generates necessary files if requested
         compass: {
             options: {
@@ -148,11 +138,11 @@ module.exports = function (grunt) {
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= config.app %>/images',
                 javascriptsDir: '<%= config.app %>/scripts',
-                fontsDir: '<%= config.app %>/styles/fonts',
+                fontsDir: '<%= config.app %>/fonts',
                 importPath: '<%= config.app %>/bower_components',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/styles/fonts',
+                httpFontsPath: '/fonts',
                 relativeAssets: false,
                 assetCacheBuster: false
             },
@@ -177,7 +167,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '.tmp/styles/',
-                    src: '{,*/}*.css',
+                    src: '{,*/}*.scss',
                     dest: '.tmp/styles/'
                 }]
             }
@@ -274,32 +264,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        // cssmin: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/styles/main.css': [
-        //                 '.tmp/styles/{,*/}*.css',
-        //                 '<%= config.app %>/styles/{,*/}*.css'
-        //             ]
-        //         }
-        //     }
-        // },
-        // uglify: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/scripts/scripts.js': [
-        //                 '<%= config.dist %>/scripts/scripts.js'
-        //             ]
-        //         }
-        //     }
-        // },
-        // concat: {
-        //     dist: {}
-        // },
-
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
@@ -329,14 +293,14 @@ module.exports = function (grunt) {
         // Run some tasks in parallel to speed up build process
         concurrent: {
             server: [
-                //'compass:server',
+                'compass:server',
                 'copy:styles'
             ],
             test: [
                 'copy:styles'
             ],
             dist: [
-                //'compass',
+                'compass',
                 'copy:styles',
                 'imagemin',
                 'svgmin'
@@ -372,11 +336,6 @@ module.exports = function (grunt) {
                 'autoprefixer'
             ]);
         }
-
-        grunt.task.run([
-            'connect:test',
-            'mocha'
-        ]);
     });
 
     grunt.registerTask('build', [

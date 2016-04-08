@@ -2,15 +2,87 @@
 // endbower
 
 body {
-    background: black;
+  background: black;
 }
 
 .browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
+
+.GameCanvas {
+  font-size: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 102.4em;
+  height: 57.6em;
+  margin-left: -51.2em;
+  margin-top: -28.8em;
+  overflow: hidden;
+  background: red;
+  z-index: 6;
+}
+
+.Sky {
+  background: url(../images/sky.jpg);
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50em;
+  width: 500%;
+  z-index: 1;
+  animation: clouds 15s linear infinite;
+}
+
+@keyframes clouds
+{
+  0%   {
+    left:0;
+  }
+  100% {
+    left:-20em;
+  }
+}
+
+.Grass {
+  background: url(../images/ground.jpg);
+  height: 8em;
+  
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.Ground {
+  background: url(../images/grass.png);
+  height: 2em;
+  width: 200em;
+  bottom: 7.7em;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  animation: grass 0.3s linear infinite;
+}
+
+@keyframes grass {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-4em, 0, 0);
+  }
+}
+
 
 @import '_game-canvas';
 @import '_player';

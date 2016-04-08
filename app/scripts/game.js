@@ -42,12 +42,16 @@ window.Game = (function() {
 	 * Starts a new game.
 	 */
 	Game.prototype.start = function() {
+		var ground = this.el.find('.Ground');
 		this.reset();
 
 		// Restart the onFrame loop
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
+		$('#Score').html(this.player.score);
+		$('#Highscore').html(this.player.highScore);
+		ground.css('animation-play-state', 'running');
 	};
 
 	/**
@@ -65,7 +69,15 @@ window.Game = (function() {
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
-		var scoreboardEl = this.el.find('.Scoreboard');
+		var scoreboardEl = that.el.find('.Scoreboard');
+		var ground = that.el.find('.Ground');
+		ground.css('animation-play-state', 'paused');
+
+		if(that.player.score > that.player.highScore) {
+			that.player.highScore = that.player.score;
+			$('#Highscore').html(that.player.highScore);
+		}
+
 		scoreboardEl
 			.addClass('is-visible')
 			.find('.Scoreboard-restart')

@@ -6,11 +6,7 @@ window.Controls = (function() {
      * Key codes we're interested in.
      */
     var KEYS = {
-        32: 'space',
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
+        32: 'space'
     };
 
     /**
@@ -24,10 +20,16 @@ window.Controls = (function() {
         this.keys = {};
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
-            .on('keyup', this._onKeyUp.bind(this));
+            .on('keyup', this._onKeyUp.bind(this))
+            .on('mousedown', this._onKeyDown.bind(this))
+            .on('mouseup', this._onKeyUp.bind(this));
     };
 
     Controls.prototype._onKeyDown = function(e) {
+        if (e.type === 'mousedown') {
+            e.keyCode = 32;
+        }
+
         // Only jump if space wasn't pressed.
         if (e.keyCode === 32 && !this.keys.space) {
             this._didJump = true;
