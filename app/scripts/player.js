@@ -2,10 +2,10 @@ window.Player = (function() {
 	'use strict';
 
 	var Controls = window.Controls;
-	var Game = window.Game;
+
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
-	var SPEED = 30; // * 10 pixels per second
+	//var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
@@ -28,6 +28,7 @@ window.Player = (function() {
 	var gameStarted = false;
 
 	Player.prototype.onFrame = function(delta) {
+
 	
 		// if (Controls.keys.right) {
 		// 	this.pos.x += delta * SPEED;
@@ -44,17 +45,17 @@ window.Player = (function() {
 
 		if (Controls.keys.space) {
 			gameStarted = true;
-		}		
+		}
 
 		if(gameStarted === true) {
-			this.pos.y += 0.3;
-		}
-
-		if (Controls.keys.space) {
-			this.pos.y += -1.5;
+			this.pos.y += delta + 0.3;
 		}
 		
-		if(this.pos.y > 43) {
+		if (Controls.keys.space) {
+			this.pos.y += delta -1.5;
+		}
+
+		if(this.pos.y > 42) {
 			gameStarted = false;
 			this.game.gameover();
 		}
@@ -63,8 +64,7 @@ window.Player = (function() {
 		
 		// Update UI
 		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
-	};	
-	
+	};
 
 	Player.prototype.checkCollisionWithBounds = function() {
 		if (this.pos.x < 0 ||
@@ -77,5 +77,4 @@ window.Player = (function() {
 	};
 
 	return Player;
-
 })();
