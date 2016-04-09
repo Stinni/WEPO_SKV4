@@ -43,6 +43,8 @@ window.Game = (function() {
 	 */
 	Game.prototype.start = function() {
 		var ground = this.el.find('.Ground');
+		var sky = this.el.find('.Sky');
+		var wings = this.el.find('.Player-wings');
 		this.reset();
 
 		// Restart the onFrame loop
@@ -52,6 +54,8 @@ window.Game = (function() {
 		$('#Score').html(this.player.score);
 		$('#Highscore').html(this.player.highScore);
 		ground.css('animation-play-state', 'running');
+		sky.css('animation-play-state', 'running');
+		wings.css('animation-play-state', 'running');
 	};
 
 	/**
@@ -71,7 +75,12 @@ window.Game = (function() {
 		var that = this;
 		var scoreboardEl = that.el.find('.Scoreboard');
 		var ground = that.el.find('.Ground');
+		var sky = this.el.find('.Sky');
+		var wings = this.el.find('.Player-wings');
+		
 		ground.css('animation-play-state', 'paused');
+		sky.css('animation-play-state', 'paused');
+		wings.css('animation-play-state', 'paused');
 
 		if(that.player.score > that.player.highScore) {
 			that.player.highScore = that.player.score;

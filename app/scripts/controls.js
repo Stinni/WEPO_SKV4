@@ -2,7 +2,7 @@
 window.Controls = (function() {
     'use strict';
 
-    var Player = window.Player;
+    //var Player = window.Player;
     /**
      * Key codes we're interested in.
      */

@@ -5,10 +5,9 @@ window.Player = (function() {
 
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
-	var DOWNSPEED = 10; // * 10 pixels per second
-	var UPSPEED = 10;
-	var WIDTH = 5;
-	var HEIGHT = 5;
+	var DOWNSPEED = 25; // * 10 pixels per second
+	var UPSPEED = 60;
+	var HEIGHT = 15;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
 
@@ -20,6 +19,7 @@ window.Player = (function() {
 		this.riseTime = (new Date()).getTime();
 		this.score = 0;
 		this.highScore = 0;
+		this.flapSound = new Audio('sounds/bat-flapping.wav');
 	};
 
 	/**
@@ -35,8 +35,11 @@ window.Player = (function() {
 
 		if (Controls.keys.space) {
 			if (!this.isRising) {
-				this.riseTime = (new Date()).getTime() + 120;
+				this.riseTime = (new Date()).getTime() + 200;
 				this.isRising = true;
+
+				this.flapSound.currentTime = 0;
+				this.flapSound.play();
 			}
 
 			this.pos.y -= delta * UPSPEED;
@@ -53,10 +56,6 @@ window.Player = (function() {
 		else {
 			this.pos.y += delta * DOWNSPEED;
 		}
-		
-		if(this.pos.y > 43) {
-			this.game.gameover();
-		}
 
 		this.checkCollisionWithBounds();
 		
@@ -65,9 +64,7 @@ window.Player = (function() {
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {
-		if (this.pos.x < 0 ||
-			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
-			this.pos.y < 0 ||
+		if (this.pos.y < 0 ||
 			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
 			return this.game.gameover();
 		}
