@@ -27,8 +27,7 @@ window.Game = (function() {
 		}
 
 		// Calculate how long since last frame in seconds.
-		var now = +new Date() / 1000,
-				delta = now - this.lastFrame;
+		var now = +new Date() / 1000, delta = now - this.lastFrame;
 		this.lastFrame = now;
 
 		// Update game entities.
@@ -39,6 +38,27 @@ window.Game = (function() {
 	};
 
 	/**
+	 * Initialize the game.
+	 */
+	Game.prototype.init = function() {
+		var that = this;
+		var scoreboardEl = that.el.find('.Scoreboard');
+		$('#Score').html(that.player.score);
+		$('#Highscore').html(that.player.highScore);
+		$('.Player').css("display","none");
+		that.lastFrame = +new Date() / 1000;
+		window.requestAnimationFrame(that.onFrame);
+
+		scoreboardEl
+			.addClass('is-visible')
+			.find('.Scoreboard-restart')
+			.one('click', function() {
+				scoreboardEl.removeClass('is-visible');
+				that.start();
+			});
+	};
+
+	/**
 	 * Starts a new game.
 	 */
 	Game.prototype.start = function() {
@@ -46,6 +66,7 @@ window.Game = (function() {
 		var sky = this.el.find('.Sky');
 		var wings = this.el.find('.Player-wings');
 		this.reset();
+		$('.Player').css("display","inline");
 
 		// Restart the onFrame loop
 		this.lastFrame = +new Date() / 1000;
@@ -75,8 +96,8 @@ window.Game = (function() {
 		var that = this;
 		var scoreboardEl = that.el.find('.Scoreboard');
 		var ground = that.el.find('.Ground');
-		var sky = this.el.find('.Sky');
-		var wings = this.el.find('.Player-wings');
+		var sky = that.el.find('.Sky');
+		var wings = that.el.find('.Player-wings');
 		
 		ground.css('animation-play-state', 'paused');
 		sky.css('animation-play-state', 'paused');

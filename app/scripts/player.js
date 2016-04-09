@@ -35,7 +35,7 @@ window.Player = (function() {
 
 		if (Controls.keys.space) {
 			if (!this.isRising) {
-				this.riseTime = (new Date()).getTime() + 200;
+				this.riseTime = (new Date()).getTime() + 100;
 				this.isRising = true;
 
 				this.flapSound.currentTime = 0;
@@ -58,7 +58,7 @@ window.Player = (function() {
 		}
 
 		this.checkCollisionWithBounds();
-		
+
 		// Update UI
 		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
 	};

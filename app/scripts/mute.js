@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var isMuted = false;
 var backgroundAudio = document.getElementById('backgroundAudio');
@@ -16,4 +16,4 @@ function mute() {
         isMuted = true;
     }
 }
- // TODO: FIX THIS AND MAKE IT WORK WITH OUR PROJECT! :D
+ // TODO: FIX THIS AND MAKE IT WORK WITH OUR PROJECT! :D*/
