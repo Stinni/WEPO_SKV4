@@ -33,7 +33,8 @@ window.Player = (function() {
 
 	Player.prototype.onFrame = function(delta) {
 
-		if (Controls.keys.space) {
+
+		if (Controls.keys.space) {	
 			if (!this.isRising) {
 				this.riseTime = (new Date()).getTime() + 120;
 				this.isRising = true;

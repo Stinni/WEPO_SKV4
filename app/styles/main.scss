@@ -83,6 +83,15 @@ body {
   }
 }
 
+.Audiobutton {
+  position:absolute;
+  height: 4em;
+  width: 4em;
+  top: 2em;
+  right: 2em;
+  z-index: 2;
+}
+
 
 @import '_game-canvas';
 @import '_player';

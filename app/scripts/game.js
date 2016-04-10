@@ -2,6 +2,7 @@
 window.Game = (function() {
 	'use strict';
 
+	document.getElementById('audioPlayer').muted = true;
 	/**
 	 * Main game class.
 	 * @param {Element} el jQuery element containing the game.
