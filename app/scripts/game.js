@@ -63,6 +63,7 @@ window.Game = (function() {
 	 * Starts a new game.
 	 */
 	Game.prototype.start = function() {
+		var plane = this.el.find('.Plane');
 		var ground = this.el.find('.Ground');
 		var sky = this.el.find('.Sky');
 		var wings = this.el.find('.Player-wings');
@@ -78,6 +79,7 @@ window.Game = (function() {
 		ground.css('animation-play-state', 'running');
 		sky.css('animation-play-state', 'running');
 		wings.css('animation-play-state', 'running');
+		plane.css('animation-play-state', 'running');
 	};
 
 	/**
@@ -101,10 +103,13 @@ window.Game = (function() {
 		var ground = this.el.find('.Ground');
 		var sky = this.el.find('.Sky');
 		var wings = this.el.find('.Player-wings');
+		var plane = this.el.find('.Plane');
 		
 		ground.css('animation-play-state', 'paused');
 		sky.css('animation-play-state', 'paused');
 		wings.css('animation-play-state', 'paused');
+		plane.css('animation-play-state', 'paused');
+
 
 		if(this.player.score > this.player.highScore) {
 			this.player.highScore = this.player.score;
