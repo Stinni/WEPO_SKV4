@@ -6,9 +6,9 @@ var muteButton = document.getElementById('Mutebtn');
 
 function mute() {
     if (audioState === 0){
-        bgMusic.src = 'audio/bat-flapping.wav';
+        bgMusic.src = 'audio/Krummavisur.mp3';
         bgMusic.muted = false;
-        bgMusic.volume = 0.5;
+        bgMusic.volume = 0.6;
         muteButton.src = 'images/playing.png';
         audioState++;
     }

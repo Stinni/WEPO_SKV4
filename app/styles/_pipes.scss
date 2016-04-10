@@ -1,7 +1,9 @@
+$pipe-width: 12em;
+
 .Pipe {
   position: absolute;
   display: none;
-  width: 12em;
+  width: $pipe-width;
   height: 100%;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -12,7 +14,7 @@
   position: relative;
   top: 0;
   left: 0;
-  width: 12em;
+  width: $pipe-width;
   height: 50em;
 
   background: url('../images/pipeReverse.png') left bottom;
@@ -23,7 +25,7 @@
   position: relative;
   top: 0;
   left: 0;
-  width: 12em;
+  width: $pipe-width;
   height: 50em;
 
   background: url('../images/pipe.png') left top;

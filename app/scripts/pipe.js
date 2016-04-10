@@ -9,7 +9,8 @@ window.Pipe = (function(){
 		this.el = el;
 		this.pos = { x: xpos, y: 0 };
 		this.startPos = xpos;
-		this.holeTop = Math.floor((Math.random() * 300) + 5);
+		this.holeTop = Math.floor((Math.random() * 300) + 7);
+		this.holeSize = HOLE_SIZE;
 
 		this.atTop = this.el.find('.atTop');
 		this.atBottom = this.el.find('.atBottom');
@@ -19,14 +20,14 @@ window.Pipe = (function(){
 
 	Pipe.prototype.reset = function() {
 		this.pos.x = this.startPos;
-		this.holeTop = Math.floor((Math.random() * 300) + 5);
+		this.holeTop = Math.floor((Math.random() * 300) + 7);
 		this.atTop.css('height', this.holeTop);
 		this.atBottom.css('top', HOLE_SIZE);
 	};
 
 	Pipe.prototype.repeat = function() {
 		this.pos.x = INIT_X_POS;
-		this.holeTop = Math.floor((Math.random() * 300) + 15);
+		this.holeTop = Math.floor((Math.random() * 300) + 7);
 		this.atTop.css('height', this.holeTop);
 		this.atBottom.css('top', HOLE_SIZE);
 	};
