@@ -19,7 +19,7 @@ window.Player = (function() {
 		this.riseTime = (new Date()).getTime();
 		this.score = 0;
 		this.highScore = 0;
-		this.flapSound = new Audio('sounds/bat-flapping.wav');
+		this.flapSound = new Audio('audio/bat-flapping.wav');
 	};
 
 	/**

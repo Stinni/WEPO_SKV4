@@ -1,0 +1,38 @@
+.Startbtn { 
+  position: absolute;
+  left: 50%;
+  top: 6em;
+  height: 30em;
+  width: 40em;
+  margin-left: -20em;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+  text-align: center;
+  transform: translate(0, -40em);
+  transition: transform 0.5s;
+  z-index: 4;
+}
+
+/**
+* Reset transform to animate it into the correct spot on the screen.
+*/
+
+.Startbtn.is-visible {
+  transform: none;
+}
+
+.Startbtn-start {
+  margin-top: 20em;
+  font-size: inherit;
+  padding: 0.4em 1.5em;
+  border: 0.2em solid white;
+  background: none;
+  cursor: pointer;
+}
+
+.Startbtn-text {
+  font-family: 'Comic Sans MS', serif;
+  font-size: 2.4em;
+  color: white;
+}

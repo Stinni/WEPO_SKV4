@@ -42,18 +42,15 @@ window.Game = (function() {
 	 */
 	Game.prototype.init = function() {
 		var that = this;
-		var scoreboardEl = that.el.find('.Scoreboard');
-		$('#Score').html(that.player.score);
-		$('#Highscore').html(that.player.highScore);
-		$('.Player').css("display","none");
-		that.lastFrame = +new Date() / 1000;
-		window.requestAnimationFrame(that.onFrame);
+		var startbtnEl = this.el.find('.Startbtn');
+		$('#Score').html(this.player.score);
+		this.reset();
 
-		scoreboardEl
+		startbtnEl
 			.addClass('is-visible')
-			.find('.Scoreboard-restart')
+			.find('.Startbtn-start')
 			.one('click', function() {
-				scoreboardEl.removeClass('is-visible');
+				startbtnEl.removeClass('is-visible');
 				that.start();
 			});
 	};
@@ -72,7 +69,6 @@ window.Game = (function() {
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
-		$('#Score').html(this.player.score);
 		$('#Highscore').html(this.player.highScore);
 		ground.css('animation-play-state', 'running');
 		sky.css('animation-play-state', 'running');
@@ -94,18 +90,18 @@ window.Game = (function() {
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
-		var scoreboardEl = that.el.find('.Scoreboard');
-		var ground = that.el.find('.Ground');
-		var sky = that.el.find('.Sky');
-		var wings = that.el.find('.Player-wings');
+		var scoreboardEl = this.el.find('.Scoreboard');
+		var ground = this.el.find('.Ground');
+		var sky = this.el.find('.Sky');
+		var wings = this.el.find('.Player-wings');
 		
 		ground.css('animation-play-state', 'paused');
 		sky.css('animation-play-state', 'paused');
 		wings.css('animation-play-state', 'paused');
 
-		if(that.player.score > that.player.highScore) {
-			that.player.highScore = that.player.score;
-			$('#Highscore').html(that.player.highScore);
+		if(this.player.score > this.player.highScore) {
+			this.player.highScore = this.player.score;
+			$('#Highscore').html(this.player.highScore);
 		}
 
 		scoreboardEl
