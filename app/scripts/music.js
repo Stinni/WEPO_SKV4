@@ -13,15 +13,11 @@ function mute() {
         audioState++;
     }
     else if(audioState === 1) {
-        bgMusic.src = 'audio/Metallica&TSFSO-NothingElseMatters.mp3';
-        audioState++;
-    }
-    else if(audioState === 2) {
         bgMusic.src = 'audio/KrummiSvafiKlettagja.mp3';
         audioState++;
     }
-    else if(audioState === 3) {
-        bgMusic.src = 'audio/Krummavisur.mp3';
+    else if(audioState === 2) {
+        bgMusic.src = 'audio/Metallica&TSFSO-NothingElseMatters.mp3';
         audioState++;
     }
     else {
