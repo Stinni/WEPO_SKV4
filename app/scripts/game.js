@@ -12,6 +12,8 @@ window.Game = (function() {
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipe1 = new window.Pipe(this.el.find('#Pipe1'), 120);
 		this.pipe2 = new window.Pipe(this.el.find('#Pipe2'), 200);
+		this.heDeadSound = new Audio('audio/heDead.mp3');
+		this.heDeadSound.volume = 0.8;
 		this.isPlaying = false;
 
 		// Cache a bound onFrame since we need it each frame.
@@ -104,12 +106,14 @@ window.Game = (function() {
 		var sky = this.el.find('.Sky');
 		var wings = this.el.find('.Player-wings');
 		var plane = this.el.find('.Plane');
-		
+
+		this.heDeadSound.currentTime=0;
+		this.heDeadSound.play();
+
 		ground.css('animation-play-state', 'paused');
 		sky.css('animation-play-state', 'paused');
 		wings.css('animation-play-state', 'paused');
 		plane.css('animation-play-state', 'paused');
-
 
 		if(this.player.score > this.player.highScore) {
 			this.player.highScore = this.player.score;
