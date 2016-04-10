@@ -1,0 +1,31 @@
+.Pipe {
+  position: absolute;
+  display: none;
+  width: 12em;
+  height: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 3;
+}
+
+.atTop {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 12em;
+  height: 50em;
+
+  background: url('../images/pipeReverse.png') left bottom;
+  background-size: 100% auto;
+}
+
+.atBottom {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 12em;
+  height: 50em;
+
+  background: url('../images/pipe.png') left top;
+  background-size: 100% auto;
+}

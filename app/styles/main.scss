@@ -23,78 +23,12 @@ body {
   margin-top: -28.8em;
   overflow: hidden;
   background: red;
-  z-index: 6;
 }
-
-.Sky {
-  background: url(../images/sky.jpg);
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50em;
-  width: 500%;
-  z-index: 1;
-  animation: clouds 15s linear infinite;
-}
-
-@keyframes clouds
-{
-  0%   {
-    left:0;
-  }
-  100% {
-    left:-20em;
-  }
-}
-
-.Grass {
-  background: url(../images/ground.jpg);
-  height: 8em;
-  
-  width: 100%;
-  bottom: 0;
-  position: absolute;
-  overflow: hidden;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-
-.Ground {
-  background: url(../images/grass.png);
-  height: 2em;
-  width: 200em;
-  bottom: 7.7em;
-  position: absolute;
-  overflow: hidden;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  animation: grass 0.3s linear infinite;
-}
-
-@keyframes grass {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-4em, 0, 0);
-  }
-}
-
-.Audiobutton {
-  position:absolute;
-  height: 4em;
-  width: 4em;
-  top: 2em;
-  right: 2em;
-  z-index: 2;
-}
-
 
 @import '_game-canvas';
 @import '_player';
+@import '_background';
+@import '_pipes';
 @import '_scoreboard';
 @import '_startbtn';
 @import '_mutebtn';
