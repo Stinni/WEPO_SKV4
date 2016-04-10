@@ -2,7 +2,6 @@
 window.Game = (function() {
 	'use strict';
 
-	document.getElementById('audioPlayer').muted = true;
 	/**
 	 * Main game class.
 	 * @param {Element} el jQuery element containing the game.
@@ -11,6 +10,8 @@ window.Game = (function() {
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
+		this.pipe1 = new window.Pipe(this.el.find('#Pipe1'), 120);
+		this.pipe2 = new window.Pipe(this.el.find('#Pipe2'), 200);
 		this.isPlaying = false;
 
 		// Cache a bound onFrame since we need it each frame.
@@ -33,6 +34,8 @@ window.Game = (function() {
 
 		// Update game entities.
 		this.player.onFrame(delta);
+		this.pipe1.onFrame(delta);
+		this.pipe2.onFrame(delta);
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -64,7 +67,8 @@ window.Game = (function() {
 		var sky = this.el.find('.Sky');
 		var wings = this.el.find('.Player-wings');
 		this.reset();
-		$('.Player').css("display","inline");
+		$('.Player').css('display','inline');
+		$('.Pipe').css('display','inline');
 
 		// Restart the onFrame loop
 		this.lastFrame = +new Date() / 1000;
@@ -81,6 +85,8 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.player.reset();
+		this.pipe1.reset();
+		this.pipe2.reset();
 	};
 
 	/**
@@ -122,4 +128,3 @@ window.Game = (function() {
 
 	return Game;
 })();
-
