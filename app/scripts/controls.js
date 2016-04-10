@@ -1,7 +1,6 @@
 
 window.Controls = (function() {
     'use strict';
-
     /**
      * Key codes we're interested in.
      */

@@ -28,8 +28,7 @@ window.Game = (function() {
 		}
 
 		// Calculate how long since last frame in seconds.
-		var now = +new Date() / 1000,
-				delta = now - this.lastFrame;
+		var now = +new Date() / 1000, delta = now - this.lastFrame;
 		this.lastFrame = now;
 
 		// Update game entities.
@@ -40,19 +39,41 @@ window.Game = (function() {
 	};
 
 	/**
+	 * Initialize the game.
+	 */
+	Game.prototype.init = function() {
+		var that = this;
+		var startbtnEl = this.el.find('.Startbtn');
+		$('#Score').html(this.player.score);
+		this.reset();
+
+		startbtnEl
+			.addClass('is-visible')
+			.find('.Startbtn-start')
+			.one('click', function() {
+				startbtnEl.removeClass('is-visible');
+				that.start();
+			});
+	};
+
+	/**
 	 * Starts a new game.
 	 */
 	Game.prototype.start = function() {
 		var ground = this.el.find('.Ground');
+		var sky = this.el.find('.Sky');
+		var wings = this.el.find('.Player-wings');
 		this.reset();
+		$('.Player').css("display","inline");
 
 		// Restart the onFrame loop
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
-		$('#Score').html(this.player.score);
 		$('#Highscore').html(this.player.highScore);
 		ground.css('animation-play-state', 'running');
+		sky.css('animation-play-state', 'running');
+		wings.css('animation-play-state', 'running');
 	};
 
 	/**
@@ -70,13 +91,18 @@ window.Game = (function() {
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
-		var scoreboardEl = that.el.find('.Scoreboard');
-		var ground = that.el.find('.Ground');
+		var scoreboardEl = this.el.find('.Scoreboard');
+		var ground = this.el.find('.Ground');
+		var sky = this.el.find('.Sky');
+		var wings = this.el.find('.Player-wings');
+		
 		ground.css('animation-play-state', 'paused');
+		sky.css('animation-play-state', 'paused');
+		wings.css('animation-play-state', 'paused');
 
-		if(that.player.score > that.player.highScore) {
-			that.player.highScore = that.player.score;
-			$('#Highscore').html(that.player.highScore);
+		if(this.player.score > this.player.highScore) {
+			this.player.highScore = this.player.score;
+			$('#Highscore').html(this.player.highScore);
 		}
 
 		scoreboardEl
