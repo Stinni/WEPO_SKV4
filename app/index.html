@@ -24,9 +24,27 @@
         <![endif]-->
 
         <div class="GameCanvas">
-            <div class="Player">
-                <div class="Player-wings"></div>    
+
+            <div class="Pipe" id="Pipe1">
+                <div class="atTop"></div>
+                <div class="atBottom"></div>
             </div>
+
+            <div class="Pipe" id="Pipe2">
+                <div class="atTop"></div>
+                <div class="atBottom"></div>
+            </div>
+
+            <div class="Player">
+                <div class="Player-wings"></div>
+            </div>
+
+            <div class="Startbtn">
+                <button class="Startbtn-start">
+                    <span class="Startbtn-text">Start</span>
+                </button>
+            </div>
+
             <div class="Scoreboard">
                 <button class="Scoreboard-restart">
                     <span class="Scoreboard-restartText">Restart</span>
@@ -37,15 +55,12 @@
                     <h1 class="Scoreboard-highscoreText">Highscore: <span id="Highscore"></span></h1>
                 </div>
             </div>
-            <div class="Startbtn">
-                <button class="Startbtn-start">
-                    <span class="Startbtn-text">Start</span>
-                </button>
-            </div>
+
             <div class="Sky"></div>
             <div class="Ground"></div>
             <div class="Grass"></div>
-            <div class="ZeAudio">
+
+            <div class="TheMusic">
                 <audio id="backgroundMusic" loop autoplay hidden></audio>
                 <img id="Mutebtn" src="images/playing.png" onclick="mute()">
             </div>
@@ -62,7 +77,7 @@
         <script src="scripts/controls.js"></script>
         <script src="scripts/game.js"></script>
         <script src="scripts/player.js"></script>
-        <script src="scripts/pipes.js"></script>
+        <script src="scripts/pipe.js"></script>
         <script src="scripts/music.js"></script>
         <script src="scripts/utils.js"></script>
         <!-- endbuild -->
