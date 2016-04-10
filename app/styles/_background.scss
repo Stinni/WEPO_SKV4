@@ -6,18 +6,17 @@
   right: 0;
   height: 50em;
   width: 500%;
-  transform: translateZ(0);
   animation: clouds 15s linear infinite;
   z-index: 1;
 }
 
 @keyframes clouds
 {
-  0%   {
-    right: 0;
+  0% {
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    left:-20em;
+    transform: translate3d(-20em, 0, 0);
   }
 }
 
@@ -65,14 +64,14 @@
   right: 0;
   z-index: 2;
   transform: translateZ(0);
-  animation: plane 18s linear infinite;
+  animation: plane 15s linear infinite;
 }
 
 @keyframes plane {
   0% {
-    right: -20em;
+      transform: translate3d(40em, 0, 0);
   }
   100% {
-    right: 120em;
+    transform: translate3d(-100em, 0, 0);
   }
 }
